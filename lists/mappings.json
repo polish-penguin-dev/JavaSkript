@@ -1,0 +1,7 @@
+{ 
+    "on": "on ${event}:\n",
+    "setJoinMessage": "    set join message to \"${message}\"\n",
+    "setLeaveMessage": "    set quit message to \"${message}\"\n",
+    "setDeathMessage": "    set the death message to \"${message}\"\n",
+    "sendMessagePlayer": "    send \"${message}\" to ${player}\n"
+}
