@@ -1,6 +1,8 @@
 { 
     "on": "\non ${event}:\n",
     "loopEverySecond": "\nevery ${seconds} real seconds:\n",
+    "loopEveryMinute": "\nevery ${minutes} real minutes:\n",
+    "loopEveryHour": "\nevery ${hours} real hours:\n",
     "setJoinMessage": "    set join message to \"${message}\"\n",
     "setLeaveMessage": "    set quit message to \"${message}\"\n",
     "setDeathMessage": "    set the death message to \"${message}\"\n",
@@ -9,6 +11,7 @@
     "executeCommandConsole": "    make console execute command \"${command}\"\n",
     "broadcast": "    broadcast \"${message}\"\n",
     "isBlockA": "    block is a ${block}\n",
+    "isName": "    name of ${thing} is \"${name}\"\n",
     "playerHasPermission": "    player has permission \"${permission}\"\n",
     "entityHasItem": "    ${entity} has ${amount} ${item}\n",
     "entityRemoveItem": "    remove ${amount} ${item} from ${entity}\n",
@@ -20,5 +23,13 @@
     "healEntity": "    heal ${entity} by ${amount} hearts\n",
     "createExplosion": "    create explosion with force ${force} at ${target}\n",
     "entityWalkSpeed": "    set ${entity}'s walk speed to ${speed}\n",
-    "playSound": "    play sound \"${sound}\" at volume ${volume} at pitch ${pitch} to ${entity}\n"
+    "applyEffect": "    apply ${effect} ${multiplier} to ${entity} for ${duration}\n",
+    "removeEffect": "    remove ${effect} from ${entity}\n",
+    "playSound": "    play sound \"${sound}\" at volume ${volume} at pitch ${pitch} to ${entity}\n",
+    "waitSeconds": "    wait ${seconds} seconds\n",
+    "waitTicks": "    wait ${ticks} ticks\n",
+    "setEntityGamemode": "    set gamemode of ${entity} to ${gamemode}\n",
+    "isGamemode": "    gamemode of ${entity} is ${gamemode}\n",
+    "killEntity": "    kill ${entity}\n",
+    "openInventory": "    open inventory of ${someone} to ${another}\n"
 }

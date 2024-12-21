@@ -1,48 +1,110 @@
-//JavaSkript Functionality Showcase
+//PenguinProtocol - 0 Command JavaSkript MC Plugin
 skript.on("load", () => {
-    skript.broadcast("JavaSkript Sample Skript Enabled.");
-});
+    skript.sendMessageConsole("[PenguinProtocol] Skript Loaded Successfully! (v1.0)");
+    skript.broadcast("[PenguinProtocol] Loaded!");
+ });
+ 
+ //Custom Join & Leave Logic
+ skript.on("join", () => {
+     skript.setJoinMessage("&9Welcome, %player%!");
+     skript.waitSeconds(0.5);
+     
+     //Join Briefing
+     skript
+     .sendMessagePlayer("Current Time: %time%", "player");
+ });
+ 
+ skript.on("quit", () => {
+    skript.setLeaveMessage("&6Bye, %player%!");
+ });
+ 
+ //Utilities (MUST BE OP AND IN CREATIVE FOR ALL!)
+ 
+ //InvSee
+ skript.on("damage", () => {
+    //Conditionals
+    skript.entityIs("victim", "a player");
+    skript.entityHeldItem("attacker", "chest");
+    skript.entityIs("attacker", "op");
+    skript.isGamemode("attacker", "creative");
+    
+    //Messages
+    skript.sendMessagePlayer("&e[PenguinProtocol] Opening %victim%'s Inventory", "attacker");
+    skript.sendMessagePlayer("&e[PenguinProtocol] Operator %attacker% Is Looking Through Your Inventory!", "victim");
+    skript.sendMessageConsole("&e[PenguinProtocol] Operator %attacker% Is Searching Through %victim%'s Inventory.'");
+    
+    //InvSee Logic
+    skript.playSound("block.note_block.pling", 1, 2, "attacker");
+    skript.healEntity("victim", 20);
+    skript.openInventory("victim", "attacker");
+ });
 
-skript.on("right click", () => {
-    skript.isBlockA("furnace"); //If Not, It Returns
-    skript.entityHasItem("player", 1, "raw chicken"); //Must Have 1 Raw Chicken; If Not, Returns
-    skript.entityIs("player", "sneaking"); //Must Sneak; If Not, Returns
+ //Leviosa!
+ skript.on("damage", () => {
+    //Conditionals
+    skript.entityHeldItem("attacker", "firework rocket");
+    skript.entityIs("attacker", "op");
+    skript.isGamemode("attacker", "creative");
+    
+    //Messages
+    skript.sendMessagePlayer("&e[PenguinProtocol] Casting Spell!", "attacker");
+    skript.sendMessagePlayer("&e[PenguinProtocol] Wingardium Leviosa!", "victim");
+    skript.sendMessageConsole("&e[PenguinProtocol] Operator %attacker% Made %victim% Float.");
+    
+    //Float Logic
+    skript.playSound("block.note_block.pling", 1, 2, "victim");
+    skript.healEntity("victim", 20);
+    skript.applyEffect("levitation", 5, "victim", "10 seconds");
+ });
 
-    skript.entityRemoveItem(1, "raw chicken", "player"); //Removes 1 Raw Chicken
-    skript.entityGiveItem("player", 1, "cooked chicken"); //Gives 1 Cooked Chicken
-    skript.sendMessagePlayer("You Got A Cooked Chicken!", "player"), skript.sendMessageConsole("%player% Obtained Cooked Chicken.")
-});
+ //Time Freeze
+ skript.on("damage", () => {
+    //Conditionals
+    skript.entityHeldItem("attacker", "clock");
+    skript.entityIs("attacker", "op");
+    skript.isGamemode("attacker", "creative");
+    
+    //Messages
+    skript.sendMessagePlayer("&e[PenguinProtocol] Freezing Player...", "attacker");
+    skript.sendMessagePlayer("&e[PenguinProtocol] FREEZE!", "victim");
+    skript.sendMessageConsole("&e[PenguinProtocol] Operator %attacker% Made %victim% Freeze!");
+    
+    //Freeze Logic (No Jump; No Move)
+    skript.playSound("block.note_block.pling", 1, 2, "victim");
+    skript.applyEffect("slowness", 255, "victim", "15 seconds");
+    skript.executeCommandConsole("attribute %victim% minecraft:jump_strength base set 0.0000001");
 
-skript.on("right click", () => {
-    skript.isBlockA("lodestone");
-    skript.createExplosion(20, "targeted block");
-});
+    skript.waitSeconds(15);
+    skript.executeCommandConsole("attribute %victim% minecraft:jump_strength base set 0.5");
+ });
 
-skript.loopEverySecond(30, () => {
-    skript.broadcast("[TIP] Please Take A Shower Immediately.");
-});
+ //SuperFood
+ skript.on("consume of apple", () => {
+    //Conditional
+    skript.entityIs("player", "op");
+    skript.isName("event-item", "Super Food");
 
-skript.on("join", () => {
-    skript.playSound("block.note_block.pling", 1, 2, "player"); //Play 'pling' At Vol. 1, Pitch 2, For Player
-    skript.entityWalkSpeed("player", 10);
-    skript.sendMessagePlayer("Rats. And rats make him crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy.", "player");
-});
+    //Logic
+    skript.healEntity("player", 20);
+    skript.applyEffect("saturation", 255, "player", "60 seconds");
+    skript.applyEffect("resistance", 255, "player", "60 seconds");
+    skript.applyEffect("speed", 3, "player", "60 seconds");
 
-skript.on("quit", () => {
-    skript.setLeaveMessage("%player% Left Because They Are Big DooDoo Head.");
-});
+    //Messages
+    skript.sendMessagePlayer("&e[PenguinProtocol] Yum!", "player");
+    skript.sendMessageConsole("&e[PenguinProtocol] %player% Consumed SuperFood!");
+ });
 
-skript.on("damage", () => {
-    skript.sendMessagePlayer("You Damaged %victim%", "attacker");
-    skript.entityIs("victim", "pig"); //If Not, Return
-
-    skript.damageEntity("attacker", 4);
-    skript.healEntity("victim", 10);
-});
-
-skript.on("damage", () => {
-    skript.entityIs("victim", "creeper"); //If Not, Return
-
-    skript.entityGiveItem("attacker", 64, "diamond blocks");
-    skript.executeCommandConsole("effect give %attacker% levitation infinite 255 true");
-});
+ //Playtime Levels
+ skript.loopEveryMinute(30, () => {
+    skript.broadcast("&eThanks For Playing! +1 Level.");
+    skript.executeCommandConsole("xp add @a 1 levels");
+ });
+ 
+ //Backups
+ skript.loopEveryHour(1, () => {
+     skript.broadcast("[PenguinProtocol] Creating Backup... (This May Be Laggy!)");
+     //FS Read/Stream Logic...
+     
+     skript.broadcast("[PenguinProtocol] Backup Complete! (Next In One Hour)"); 
+ });

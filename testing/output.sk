@@ -1,39 +1,25 @@
 #Transpiled With The JavaSkript Project
 
 on load:
-    broadcast "JavaSkript Sample Skript Enabled."
-
-on right click:
-    block is a furnace
-    player has 1 raw chicken
-    player is sneaking
-    remove 1 raw chicken from player
-    give player 1 cooked chicken
-    send "You Got A Cooked Chicken!" to player
-    send "%player% Obtained Cooked Chicken." to console
-
-on right click:
-    block is a lodestone
-    create explosion with force 20 at targeted block
-
-every 30 real seconds:
-    broadcast "[TIP] Please Take A Shower Immediately."
+    send "[PenguinProtocol] Skript Loaded Successfully! (v1.0)" to console
+    broadcast "[PenguinProtocol] Loaded!"
 
 on join:
-    play sound "block.note_block.pling" at volume 1 at pitch 2 to player
-    set player's walk speed to 10
-    send "Rats. And rats make him crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy. Crazy? I was crazy once. They locked me in a room. A rubber room. A rubber room filled with rats. And rats make me crazy." to player
+    set join message to "Welcome, %player%!"
+    wait 0.5 seconds
+    send "Current Time: %time%" to player
 
 on quit:
-    set quit message to "%player% Left Because They Are Big DooDoo Head."
+    set quit message to "Bye, %player%!"
 
 on damage:
-    send "You Damaged %victim%" to attacker
-    victim is pig
-    damage attacker by 4 hearts
-    heal victim by 10 hearts
+    victim is a player
+    attacker's held item is chest
+    send "[PenguinProtocol] Looking In %victim%'s Inventory..." to attacker
+    send "[PenguinProtocol] Operator %attacker% Is Looking Through Your Inventory!" to victim
+    send "[PenguinProtocol] Operator %attacker% Is Searching Through %victim%'s Inventory.'" to console
 
-on damage:
-    victim is creeper
-    give attacker 64 diamond blocks
-    make console execute command "effect give %attacker% levitation infinite 255 true"
+every 1 real hours:
+    broadcast "[PenguinProtocol] Creating Backup... (This May Be Laggy!)"
+    broadcast "[PenguinProtocol] Backup Complete! (Next In One Hour)"
+
