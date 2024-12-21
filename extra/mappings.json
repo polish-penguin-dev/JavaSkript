@@ -1,8 +1,24 @@
 { 
     "on": "\non ${event}:\n",
+    "loopEverySecond": "\nevery ${seconds} real seconds:\n",
     "setJoinMessage": "    set join message to \"${message}\"\n",
     "setLeaveMessage": "    set quit message to \"${message}\"\n",
     "setDeathMessage": "    set the death message to \"${message}\"\n",
     "sendMessagePlayer": "    send \"${message}\" to ${player}\n",
-    "sendMessageConsole": "    send \"${message}\" to console\n"
+    "sendMessageConsole": "    send \"${message}\" to console\n",
+    "executeCommandConsole": "    make console execute command \"${command}\"\n",
+    "broadcast": "    broadcast \"${message}\"\n",
+    "isBlockA": "    block is a ${block}\n",
+    "playerHasPermission": "    player has permission \"${permission}\"\n",
+    "entityHasItem": "    ${entity} has ${amount} ${item}\n",
+    "entityRemoveItem": "    remove ${amount} ${item} from ${entity}\n",
+    "entityGiveItem": "    give ${entity} ${amount} ${item}\n",
+    "entityHeldItem": "    ${entity}'s held item is ${item}\n",
+    "entityIs": "    ${entity} is ${something}\n",
+    "entityIsNot": "    ${entity} is not ${something}\n",
+    "damageEntity": "    damage ${entity} by ${amount} hearts\n",
+    "healEntity": "    heal ${entity} by ${amount} hearts\n",
+    "createExplosion": "    create explosion with force ${force} at ${target}\n",
+    "entityWalkSpeed": "    set ${entity}'s walk speed to ${speed}\n",
+    "playSound": "    play sound \"${sound}\" at volume ${volume} at pitch ${pitch} to ${entity}\n"
 }

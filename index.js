@@ -8,6 +8,7 @@
 import * as fs from "fs";
 import * as acorn from "acorn";
 import * as estraverse from "estraverse";
+import chalk from "chalk";
 
 import * as server from "./extra/create_server.js";
 
@@ -18,7 +19,7 @@ const args = process.argv.slice(2);
 
 async function main() {
     if (args.includes("-r") || args.includes("--run")) {
-        console.log("[JavaSkript] Running Skript Server!");
+        console.log(`${chalk.green("[JavaSkript]")} Running Skript Server!`);
         await server.run(process.cwd());
         return;
     }
@@ -32,7 +33,7 @@ async function main() {
         }
     });
 
-    if(!ipath || !opath) console.log("You MUST Specify Input & Output Path With -o And -i!") && process.exit(1);
+    if(!ipath || !opath) console.log(`${chalk.red("[JavaSkript]")} You MUST Specify Input & Output Path With -o And -i!`) && process.exit(1);
 
     const mappings = JSON.parse(fs.readFileSync("./extra/mappings.json", "utf8"));
     const input = fs.readFileSync(ipath, "utf8");
@@ -42,7 +43,7 @@ async function main() {
 
     //Transpile To Skript
     function transpile(ast) {
-        let output = "";
+        let output = "#Transpiled With The JavaSkript Project\n";
 
         estraverse.traverse(ast, {
             enter(node) {
@@ -66,7 +67,9 @@ async function main() {
         return output;
     }
 
+    let start = Date.now();
     fs.writeFileSync(opath, transpile(ast), "utf8");
+    console.log(`${chalk.green("[JavaSkript]")} Transpiled ${ipath} To ${opath} Successfully! (Time: ${Date.now() - start}ms)`);
 }
 
 await main();

@@ -1,7 +1,10 @@
 # JavaSkript
-## JavaScript -> (Minecraft) Skript Transpiler!
+## JavaScript -> (Minecraft) Skript 'Transpiler'!
 
 (In The Future) A Modern Replacement For The Inactive ScriptCraft & CustomRealms.
+
+Allows You To Write Skript Plugins With JS Syntax. Note That This Is NOT A Full Transpiler - Only Custom Functions (e.g. skript.setJoinMessage) Transpile; Native JS Vars, Functions, Ifs Do NOT. See Testing Folder For Examples; Mappings.Json For Full JS -> Skript
+Mappings.
 
 DO NOT USE IN PRODUCTION! This Is A Work In Progress And Omits Many Crucial Features!
 

@@ -16,7 +16,7 @@ export async function run(path) {
 
     //Download Latest Paper Server
     console.log("[JavaSkript] Downloading Latest Paper Server...");
-    await exec(`curl -L https://mc-srv-dl-api-production.up.railway.app/download/paper/latest/latest -o ${path}/mc_server/server.jar`);
+    await exec(`curl -L https://mc-srv-dl-api-production.up.railway.app/download/paper/latest/latest -o "${path}/mc_server/server.jar"`);
     console.log("[JavaSkript] Download Complete!");
 
     //Create EULA
@@ -31,7 +31,7 @@ export async function run(path) {
     fs.mkdirSync(`${path}/mc_server/plugins`);
 
     console.log("[JavaSkript] Downloading Skript...");
-    await exec(`curl -L https://api.spiget.org/v2/resources/114544/download -o ${path}/mc_server/plugins/skript.jar`);
+    await exec(`curl -L https://api.spiget.org/v2/resources/114544/download -o "${path}/mc_server/plugins/skript.jar"`);
     console.log("[JavaSkript] Download Complete!");
 
     console.log(`[JavaSkript] The Server Will Now Start. Once Started, You Can Begin To Transpile Your Script To ${path}/mc_server/plugins/Skript/scripts.`);
