@@ -1,3 +1,0 @@
-on join:
-    set join message to "§l%player% Joined The Server! Say Hi!"
-    send "Welcome to our Server!" to %player%

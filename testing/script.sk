@@ -1,0 +1,10 @@
+
+on join:
+    set join message to "§l%player% Joined The Server! Say Hi!"
+    send "Welcome to our Server!" to player
+
+on death:
+    set the death message to "%player% Died... Do Better!"
+
+on load:
+    send "[MyPlugin] Loaded Plugin!" to console
