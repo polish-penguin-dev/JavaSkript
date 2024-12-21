@@ -5,21 +5,63 @@ on load:
     broadcast "[PenguinProtocol] Loaded!"
 
 on join:
-    set join message to "Welcome, %player%!"
+    set join message to "&9Welcome, %player%!"
     wait 0.5 seconds
     send "Current Time: %time%" to player
 
 on quit:
-    set quit message to "Bye, %player%!"
+    set quit message to "&6Bye, %player%!"
 
 on damage:
     victim is a player
     attacker's held item is chest
-    send "[PenguinProtocol] Looking In %victim%'s Inventory..." to attacker
-    send "[PenguinProtocol] Operator %attacker% Is Looking Through Your Inventory!" to victim
-    send "[PenguinProtocol] Operator %attacker% Is Searching Through %victim%'s Inventory.'" to console
+    attacker is op
+    gamemode of attacker is creative
+    send "&e[PenguinProtocol] Opening %victim%'s Inventory" to attacker
+    send "&e[PenguinProtocol] Operator %attacker% Is Looking Through Your Inventory!" to victim
+    send "&e[PenguinProtocol] Operator %attacker% Is Searching Through %victim%'s Inventory.'" to console
+    play sound "block.note_block.pling" at volume 1 at pitch 2 to attacker
+    heal victim by 20 hearts
+    open inventory of victim to attacker
+
+on damage:
+    attacker's held item is firework rocket
+    attacker is op
+    gamemode of attacker is creative
+    send "&e[PenguinProtocol] Casting Spell!" to attacker
+    send "&e[PenguinProtocol] Wingardium Leviosa!" to victim
+    send "&e[PenguinProtocol] Operator %attacker% Made %victim% Float." to console
+    play sound "block.note_block.pling" at volume 1 at pitch 2 to victim
+    heal victim by 20 hearts
+    apply levitation 5 to victim for 10 seconds
+
+on damage:
+    attacker's held item is clock
+    attacker is op
+    gamemode of attacker is creative
+    send "&e[PenguinProtocol] Freezing Player..." to attacker
+    send "&e[PenguinProtocol] FREEZE!" to victim
+    send "&e[PenguinProtocol] Operator %attacker% Made %victim% Freeze!" to console
+    play sound "block.note_block.pling" at volume 1 at pitch 2 to victim
+    apply slowness 255 to victim for 15 seconds
+    make console execute command "attribute %victim% minecraft:jump_strength base set 0.0000001"
+    wait 15 seconds
+    make console execute command "attribute %victim% minecraft:jump_strength base set 0.5"
+
+on consume of apple:
+    player is op
+    name of event-item is "Super Food"
+    heal player by 20 hearts
+    apply saturation 255 to player for 60 seconds
+    apply resistance 255 to player for 60 seconds
+    apply speed 3 to player for 60 seconds
+    send "&e[PenguinProtocol] Yum!" to player
+    send "&e[PenguinProtocol] %player% Consumed SuperFood!" to console
+
+every 30 real minutes:
+    broadcast "&eThanks For Playing! +1 Level."
+    make console execute command "xp add @a 1 levels"
 
 every 1 real hours:
     broadcast "[PenguinProtocol] Creating Backup... (This May Be Laggy!)"
     broadcast "[PenguinProtocol] Backup Complete! (Next In One Hour)"
-
